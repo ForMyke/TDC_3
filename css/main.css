@@ -1,0 +1,47 @@
+
+.navbar {
+    font-weight: bold;
+}
+
+.navbar-brand {
+    color: #161616; /* Texto en rojo */
+}
+
+.navbar-nav .nav-link {
+    color: #161616; /* Texto en rojo */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #a1837a; /* Texto en rojo */
+}
+
+.navbar-brand:hover {
+    color: #36738E; /* Texto en rojo */
+}
+
+body {
+    background-color: #EFEFEF; /* Fondo negro */
+    color: #161616; /* Texto en rojo */
+}
+.center-vertically-and-horizontally {
+    height: 100vh; /* Fallback for browsers do not support Custom Properties */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    border-radius: 10px;
+    border-color: #EBB7A7; /* Borde del modal en rojo */
+}
+.modal-header, .modal-footer {
+    background-color: #FFC7C5; /* Fondo de cabecera y pie del modal en rojo */
+    color: #161616;
+}
+.navbar .dropdown-menu {
+    display: block;
+}
+
+.color {
+    background-color: #FFC7C5;
+    color:#161616;
+}
