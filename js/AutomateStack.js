@@ -200,7 +200,35 @@ const dfaIdentifiers = {
   },
 };
 
-const typesOfOperators = new Set(["+", "-", "*", "/", "%"]);
+const typesOfOperators = new Set([
+  "+", 
+  "-", 
+  "*", 
+  "/", 
+  "%"
+]);
+const tiposDeDatos = new Set([
+  "short",
+  "int",
+  "long",
+  "unsigned short",
+  "unsigned int",
+  "unsigned long",
+  "float",
+  "double",
+  "char",
+]);
+const palabrasReservadas = new Set([
+  "auto", "break", "case", "char", "const", "continue",
+  "default", "do", "double", "else", "enum", "extern",
+  "float", "for", "goto", "if", "inline", "int",
+  "long", "register", "restrict", "return", "short", "signed",
+  "sizeof", "static", "struct", "switch", "typedef", "union",
+  "unsigned", "void", "volatile", "while", "_Alignas", "_Alignof",
+  "_Atomic", "_Bool", "_Complex", "_Generic", "_Imaginary",
+  "_Noreturn", "_Static_assert", "_Thread_local"
+]);
+
 
 class Stack {
   constructor() {
@@ -238,7 +266,7 @@ class PDA {
     let state = this.currentState;
     switch (state) {
       case "q1":
-        if (dfaIdentifiers.accept(input) === 1) {
+        if ((dfaIdentifiers.accept(input) === 1) && (!tiposDeDatos.has(input)) && (!palabrasReservadas.has(input))) {
           this.stack.push("Z");
           state = "q2";
         } else {
@@ -270,15 +298,14 @@ class PDA {
           }
           state = "q3";
         } else if (
-          dfaNumbers.accept(input) === 1 ||
-          dfaIdentifiers.accept(input) === 1
-        ) {
+          dfaNumbers.accept(input) === 1) {
           state = "q4";
+        } else if ((dfaIdentifiers.accept(input) === 1) && (!tiposDeDatos.has(input))) {
+          state = "q7";
+        } else {
+          state = "qX";
         }
 
-        // else if (dfaIdentifiers.accept(input) === 1){
-        //     state = 'q2';
-        // }
         break;
 
       case "q4":
@@ -323,7 +350,7 @@ class PDA {
           }
           state = "q5";
         } else if (
-          dfaIdentifiers.accept(input) === 1 ||
+          (dfaIdentifiers.accept(input) === 1) && (!tiposDeDatos.has(input)) ||
           dfaNumbers.accept(input) === 1
         ) {
           state = "q6";
@@ -358,6 +385,17 @@ class PDA {
           state = "qX";
         }
 
+        break;
+
+
+      case "q7":
+        if (input === "=") {
+          state = "q3";
+        } else if (typesOfOperators.has(input)) {
+          state = "q5";
+        } else {
+          state = "qX";
+        }
         break;
 
       default:
@@ -407,6 +445,31 @@ class PDA {
 
 // Ejemplo de uso
 const pda = new PDA();
-var String = "var12 = ( var / 12.12E+12 ) + 5 % ( 12.2 * 0x12A ) ;";
+
+
+// ACEPTADOS
+//var String = "var12 = ( var / 12.12E+12 ) + 5 % ( 12.2 * 0x12A ) ;";
+//var String= "A2 = A1 + 12 + C5 ;";
+//var String = "AB = A * B / 100 - 59 ;";
+//var String = "ABC = ( 340 % 2 ) + ( 12 - C ) ;";
+//var String = "AC = 0312 + ox12AB * ( 5.12E+12 + B ) ;";
+//var String = "Var1 = Var2 = Var3 = 8 ;";
+//var String = "VAR = ( CatA + ( ( CatA + CatB ) * CatC ) ) * ( CatD - CatF ) ;";
+
+
+// RECHAZADOS
+//var String = "3 = A2 = 1 + 12 + C5 ;";
+//var String = "AB = A * * B / 100 - 59 ;";
+//var String = "ABC ( 340 % 2 ) ;";
+//var String = "5var = 5 * data ;";
+//var String = "x = int * 2 + x ;";
+//var String = "info = cateto1 + cateto2 + ( ) - ) * ( ;";                            // REVISAR
+//var String = "VAR = ( CatA + ( CatA + CatB ) * CatC ) ) * ( CatD - CatF ) ;";
+//var String = "VAR = ( CatA + ( ( CatA + CatB ) * CatC ) ) * ( CatD - CatF ;";
+//var String = "temp = 0284 * 0x1X2 - 3.14EE1.3 ;";
+//var String = "typedef = val1 % val2 ;";
+
+
+
 var inputString = String.split(" ");
 console.log(pda.accept(inputString));
