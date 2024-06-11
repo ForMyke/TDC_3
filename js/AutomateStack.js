@@ -448,28 +448,28 @@ const pda = new PDA();
 
 
 // ACEPTADOS
-//var String = "var12 = ( var / 12.12E+12 ) + 5 % ( 12.2 * 0x12A ) ;";
-//var String= "A2 = A1 + 12 + C5 ;";
-//var String = "AB = A * B / 100 - 59 ;";
-//var String = "ABC = ( 340 % 2 ) + ( 12 - C ) ;";
-//var String = "AC = 0312 + ox12AB * ( 5.12E+12 + B ) ;";
-//var String = "Var1 = Var2 = Var3 = 8 ;";
-//var String = "VAR = ( CatA + ( ( CatA + CatB ) * CatC ) ) * ( CatD - CatF ) ;";
+//let String = "var12 = ( var / 12.12E+12 ) + 5 % ( 12.2 * 0x12A ) ;";
+//let String= "A2 = A1 + 12 + C5 ;";
+//let String = "AB = A * B / 100 - 59 ;";
+//let String = "ABC = ( 340 % 2 ) + ( 12 - C ) ;";
+//let String = "AC = 0312 + ox12AB * ( 5.12E+12 + B ) ;";
+//let String = "Var1 = Var2 = Var3 = 8 ;";
+//let String = "VAR = ( CatA + ( ( CatA + CatB ) * CatC ) ) * ( CatD - CatF ) ;";
 
 
 // RECHAZADOS
-//var String = "3 = A2 = 1 + 12 + C5 ;";
-//var String = "AB = A * * B / 100 - 59 ;";
-//var String = "ABC ( 340 % 2 ) ;";
-//var String = "5var = 5 * data ;";
-//var String = "x = int * 2 + x ;";
-//var String = "info = cateto1 + cateto2 + ( ) - ) * ( ;";                            // REVISAR
-//var String = "VAR = ( CatA + ( CatA + CatB ) * CatC ) ) * ( CatD - CatF ) ;";
-//var String = "VAR = ( CatA + ( ( CatA + CatB ) * CatC ) ) * ( CatD - CatF ;";
-//var String = "temp = 0284 * 0x1X2 - 3.14EE1.3 ;";
-//var String = "typedef = val1 % val2 ;";
+//let String = "3 = A2 = 1 + 12 + C5 ;";
+//let String = "AB = A * * B / 100 - 59 ;";
+//let String = "ABC ( 340 % 2 ) ;";
+//let String = "5var = 5 * data ;";
+//let String = "x = int * 2 + x ;";
+//let String = "info = cateto1 + cateto2 + ( ) - ) * ( ;";                            // REVISAR
+//let String = "VAR = ( CatA + ( CatA + CatB ) * CatC ) ) * ( CatD - CatF ) ;";
+//let String = "VAR = ( CatA + ( ( CatA + CatB ) * CatC ) ) * ( CatD - CatF ;";
+//let String = "temp = 0284 * 0x1X2 - 3.14EE1.3 ;";
+//let String = "typedef = val1 % val2 ;";
 
 
 
-var inputString = String.split(" ");
+let inputString = String.split(" ");
 console.log(pda.accept(inputString));
