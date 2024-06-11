@@ -49,26 +49,30 @@ document.addEventListener('DOMContentLoaded', function() {
             .enter().append('g')
             .attr('class', 'node')
             .attr('transform', d => `translate(${d.x},${d.y})`)
+            // Cambios en los colores de los nodos y enlaces cuando se interactúa con ellos
             .on('mouseover', function (event, d) {
                 if (d.id !== 1) {
                     d3.select(this).select('circle')
-                      .transition()
-                      .duration(200)
-                      .attr('r', 20)
-                      .style('opacity', 1)
-                      .ease(d3.easeElasticOut.amplitude(3).period(2));
+                    .transition()
+                    .duration(200)
+                    .attr('r', 20)
+                    .style('fill', '#ffcccc') /* Cambiar a un rosa más claro al pasar el ratón */
+                    .style('opacity', 1)
+                    .ease(d3.easeElasticOut.amplitude(3).period(2));
                 }
             })
             .on('mouseout', function (event, d) {
                 if (d.id !== 1) {
                     d3.select(this).select('circle')
-                      .transition()
-                      .duration(200)
-                      .attr('r', 10)
-                      .style('opacity', 0.7)
-                      .ease(d3.easeElasticOut.amplitude(3).period(2));
+                    .transition()
+                    .duration(200)
+                    .attr('r', 10)
+                    .style('fill', '#ffb6c1') /* Volver al rosa pastel */
+                    .style('opacity', 0.7)
+                    .ease(d3.easeElasticOut.amplitude(3).period(2));
                 }
             });
+
 
         node.append('circle').attr('r', 10);
         node.append('text')
@@ -78,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .text(d => d.data.name)
             .style('text-anchor', 'start')
             .style('font-weight', 'bold')
-            .style('fill', 'white');
+            .style('fill', 'black');
 
         svg.selectAll('.link')
             .data(links, d => d.target.id)
