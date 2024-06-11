@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/graph.css" />
+    <title>Grafo Interactivo</title>
+
+    <style>
+      #button-container {
+        text-align: right; /* Alinea los botones a la derecha */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="graph">
+      <h1>TC - PRACTICA 3 - GIC</h1>
+      <h2>Franco Rayas Angel Damian</h2>
+    </div>
+    <div id="container">
+      <div>
+        <p>Insertar aquí su archivo Java para su validación léxica.</p>
+        <label for="file-upload">Cargar archivo .java</label>
+        <input type="file" id="file-upload" accept=".java" />
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("file-upload")
+        .addEventListener("change", function (event) {
+          const file = event.target.files[0];
+          const reader = new FileReader();
+          reader.onload = function () {
+            const data = reader.result;
+            const url = new URL("preview.html", window.location.origin);
+            url.searchParams.append("file", file.name);
+            const previewWindow = window.open(url, "_blank");
+            previewWindow.onload = function () {
+              previewWindow.postMessage(data, window.location.origin);
+            };
+          };
+          reader.readAsText(file);
+        });
+    </script>
+  </body>
+</html>

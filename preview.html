@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Previsualización del Archivo Java</title>
+    <link rel="stylesheet" href="/css/preview.css" />
+
+    <style>
+      pre {
+        counter-reset: line;
+      }
+      pre span {
+        counter-increment: line;
+      }
+      pre span::before {
+        content: counter(line);
+        display: inline-block;
+        padding: 0 2em;
+        margin-right: 0.5em;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Previsualización de código a analizar</h1>
+    <div id="file-info">
+      <p>Nombre del archivo: <span id="file-name"></span></p>
+    </div>
+    <pre id="file-content"></pre>
+    <!-- Contenido original -->
+    <pre id="file-content1"></pre>
+
+    <!-- Nueva copia para trabajar -->
+    <div id="container">
+      <button id="analyze">Analizar</button>
+    </div>
+
+    <pre id="automate"></pre>
+    <script src="js/tokens.js"></script>
+    <script src="js/preview.js"></script>
+
+    <script>
+      // Escuchar el mensaje enviado desde el archivo 'index.html'
+      window.addEventListener("message", function (event) {
+        if (event.origin !== window.location.origin) {
+          return;
+        }
+
+        const data = event.data;
+        const lines = data.split("\n");
+        const numberedLines = lines
+          .map((line) => `<span>${line}</span>`)
+          .join("\n");
+
+        document.getElementById("file-content1").innerHTML = numberedLines;
+        const urlParams = new URLSearchParams(window.location.search);
+        const fileName = urlParams.get("file");
+        document.getElementById("file-name").textContent = fileName;
+      });
+    </script>
+  </body>
+</html>
