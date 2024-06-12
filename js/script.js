@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     .transition()
                     .duration(200)
                     .attr('r', 20)
-                    .style('fill', '#ffcccc') /* Cambiar a un rosa más claro al pasar el ratón */
+                    .style('fill', '#c6aae8;') /* Cambiar a un rosa más claro al pasar el ratón */
                     .style('opacity', 1)
                     .ease(d3.easeElasticOut.amplitude(3).period(2));
                 }
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     .transition()
                     .duration(200)
                     .attr('r', 10)
-                    .style('fill', '#ffb6c1') /* Volver al rosa pastel */
+                    .style('fill', '#c6aae8;') /* Volver al rosa pastel */
                     .style('opacity', 0.7)
                     .ease(d3.easeElasticOut.amplitude(3).period(2));
                 }
@@ -82,7 +82,8 @@ document.addEventListener('DOMContentLoaded', function() {
             .text(d => d.data.name)
             .style('text-anchor', 'start')
             .style('font-weight', 'bold')
-            .style('fill', 'black');
+            .style('fill', '#C5C5C5')
+            .style('font-family', 'Font');
 
         svg.selectAll('.link')
             .data(links, d => d.target.id)
@@ -96,9 +97,10 @@ document.addEventListener('DOMContentLoaded', function() {
             svg.selectAll(".node")
               .filter((d) => d.id === id)
               .select("circle")
-              .style("fill", "#ff98e5") // Cambiar el color de fondo
+              .style("fill", "#c6aae8") // Cambiar el color de fondo
               .style("stroke-width", 3) // Ajustar el ancho del borde
               .style("stroke", "white") // Cambiar el color del borde
+              .style("opacity", 0.9) // Ajustar la opacidad del nodo
               .style("stroke-opacity", 0.7) // Ajustar la opacidad del borde
               .attr("r", 25); // Aumentar el tamaño del círculo
         });
