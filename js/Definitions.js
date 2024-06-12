@@ -217,6 +217,9 @@ export const tiposDeDatos = new Set([
 ]);
 
 export const palabrasReservadas = new Set([
+  "printf",
+  "scanf",
+  "return",
   "auto",
   "break",
   "case",
@@ -261,4 +264,14 @@ export const palabrasReservadas = new Set([
   "_Noreturn",
   "_Static_assert",
   "_Thread_local",
+]);
+
+export const extras = new Set([
+  "printf",
+  "scanf",
+  "return",
+  "//",
+  "#include",
+  "{",
+  "}",
 ]);
