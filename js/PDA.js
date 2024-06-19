@@ -153,16 +153,6 @@ export class PDA {
         }
         break;
 
-      case "q8":
-        if (input === "=") {
-          this.currentState = "q3";
-        } else if (typesOfOperators.has(input)) {
-          this.currentState = "q5";
-        } else {
-          this.currentState = "qX";
-        }
-        break;
-
       case "q9":
         if (input === "=") {
           this.currentState = "qX";
