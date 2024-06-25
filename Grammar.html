@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Validador de PDA</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/github-dark.min.css"
+    />
+    <link rel="icon" href="./TC3/fonts/items/ico.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/grammar.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Raleway:400");
+      @font-face {
+        font-family: "Font";
+        src: url("./fonts/items/JetBrains.ttf");
+      }
+
+      li,
+      ul {
+        text-align: justify;
+        text-justify: inter-word;
+      }
+    </style>
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+  <body>
+    <div class="main-container d-flex">
+      <!-- Navbar a la izquierda -->
+      <nav
+        class="navbar navbar-expand-lg navbar color flex-column align-items-center position-relative"
+      >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav flex-column">
+            <li class="nav-item active">
+              <a class="nav-link" href="./index.html"
+                ><i class="fas fa-home"></i
+              ></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                ><i class="fas fa-project-diagram"></i
+                ><span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./code/three.html"
+                ><i class="fas fa-tree"></i
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./Grammar.html"
+                ><i class="fas fa-book"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Contenido a la derecha -->
+      <div class="content flex-grow-1">
+        <div class="center-vertically-and-horizontally">
+          <div class="text-center" style="font-size: 50px">
+            <!-- Texto latex -->
+            <p>
+              $$ G = ( \space \{ \space K \space \}, \space \{ \space L \space
+              \}, \space S, \space \{ \space P \space \} \space ) $$
+            </p>
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div>
+          <hr />
+          <br />
+          <br />
+          <br />
+          <div class="text-center">
+            <h1>Gramatica independiente de contexto</h1>
+            <br />
+            <br />
+            <br />
+          </div>
+        </div>
+        <div class="center-vertically-and-horizontally">
+          <div class="text-center">
+            <br />
+            <p style="font-size: 20px">
+              <b> Donde 'K' es el conjunto de simbolos No terminales </b>
+            </p>
+            <!-- Lista de simbolos no terminales -->
+            <p style="color: #45475a">
+              K = Asignacion <br />
+              Identificador <br />
+              Expresion <br />
+              Termino <br />
+              Factor <br />
+              Numero <br />
+              Hexadecimal <br />
+              NotacionCientifica
+            </p>
+            <br />
+            <p style="font-size: 20px">
+              <b> Donde 'L' es el conjunto de simbolos Terminales </b>
+            </p>
+            <!-- Lista de simbolos terminales -->
+            <p style="color: #45475a">
+              L = + <br />
+              - <br />
+              * <br />
+              / <br />
+              ^ <br />
+              ( <br />
+              ) <br />
+              ; <br />
+              = <br />
+              , <br />
+              . <br />
+              0 ... 9 <br />
+              a ... z <br />
+              A ... Z
+            </p>
+            <br />
+            <p style="font-size: 20px">
+              <b> Donde 'P' es el conjunto de reglas de produccion </b>
+            </p>
+            <!-- Lista de reglas de produccion -->
+            <ol style="color: #45475a">
+              <li>S -> Asignacion</li>
+              <li>
+                Asignacion -> Identificador = Expresion ; | Identificador =
+                Asignacion
+              </li>
+              <li>
+                Expresion -> Expresion + Termino | Expresion - Termino | Termino
+              </li>
+              <li>
+                Termino -> Termino * Factor | Termino / Factor | Termino %
+                Factor | Factor
+              </li>
+              <li>Factor -> ( Expresion ) | Numero | Identificador</li>
+              <li>Numero -> Entero | Hexadecimal | NotacionCientifica</li>
+              <li>Identificador -> Letra ( Letra | Digito )*</li>
+              <li>Hexadecimal -> 0x ( Digito | A ... F )*</li>
+              <li>
+                NotacionCientifica -> Digito+ . Digito+ ( E | e ) [ + | - ]
+                Digito+
+              </li>
+              <li>Entero -> Digito+</li>
+              <li>DigitoHexadecimal -> 0 ... 9 | A ... F</li>
+              <li>Letra -> a ... z | A ... Z</li>
+              <li>Digito -> 0 ... 9</li>
+            </ol>
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="module" src="./js/App.js"></script>
+  </body>
+</html>

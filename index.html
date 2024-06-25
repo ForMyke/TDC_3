@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gramatica GIC</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/github-dark.min.css"
+    />
+    <link rel="icon" href="./fonts/items/main.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.2/dist/sweetalert2.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+      .file-input-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+      }
+    </style>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"
+      defer
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"
+      defer
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.2/dist/sweetalert2.min.js"
+      defer
+    ></script>
+    <script type="module" src="./js/App.js" defer></script>
+  </head>
+  <body>
+    <div class="main-container d-flex">
+      <!-- Navbar a la izquierda -->
+      <nav
+        class="navbar navbar-expand-lg navbar color flex-column align-items-center position-relative"
+      >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav flex-column">
+            <li class="nav-item active">
+              <a class="nav-link" href="./index.html"
+                ><i class="fas fa-home"></i
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fas fa-tree"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./code/three.html"
+                ><i class="fas fa-project-diagram"></i
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./Grammar.html"
+                ><i class="fas fa-book"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- Contenido a la derecha -->
+      <div class="content flex-grow-1">
+        <!-- Contenedor para el botón de elegir archivo -->
+        <div class="file-input-container">
+          <input type="file" id="fileInput" class="btn color" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="resultModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="resultModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="resultModalLabel">Errores en</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <pre id="resultContent"></pre>
+            <hr />
+            <pre
+              class="bordered"
+            ><code id="fileDisplayArea" class="language-c color1"></code></pre>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SweetAlert script -->
+    <script>
+      document
+        .getElementById("fileInput")
+        .addEventListener("change", function (event) {
+          event.preventDefault(); // Evitar el comportamiento predeterminado
+          let timerInterval;
+          Swal.fire({
+            title: "Encontrando Errores!",
+            html: "Analizando <b></b> .",
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: () => {
+              Swal.showLoading();
+              const timer = Swal.getHtmlContainer().querySelector("b");
+              timerInterval = setInterval(() => {
+                timer.textContent = Swal.getTimerLeft();
+              }, 100);
+            },
+            willClose: () => {
+              clearInterval(timerInterval);
+            },
+          }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+              console.log("I was closed by the timer");
+              // Aquí puedes manejar la carga del archivo
+              const file = event.target.files[0];
+              // Realiza las acciones necesarias con el archivo
+              console.log("Archivo cargado:", file.name);
+            }
+          });
+        });
+    </script>
+  </body>
+</html>

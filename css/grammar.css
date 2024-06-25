@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400");
+
+@font-face {
+  font-family: "Font";
+  src: url("./fonts/items/JetBrains.ttf");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  color: #c6aae8;
+  font-family: "Raleway", sans-serif;
+  background: #fff;
+  min-height: 100vh;
+}
+
+li,
+ul {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+a {
+  text-align: start;
+}
+
+hr {
+  border: 2px;
+  height: 3px;
+  opacity: 0.7;
+  background-color: #e296cf;
+}
+
+h1 {
+  color: #0000ff;
+  font-size: 35px;
+}
+
+h2 {
+  color: #c5c5c5;
+  font-size: 25px;
+}
+
+.navbar {
+  background-color: #e74c3c; /* Fondo rojo */
+  width: 100px; /* Ancho fijo para la barra de navegación */
+
+  position: relative; /* Posición relativa para permitir la posición absoluta de los iconos */
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: #fff;
+}
+
+.navbar-nav .nav-link {
+  color: #fff;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ddd;
+}
+
+.modal-content {
+  border-color: #c6aae8;
+  border-radius: 10px;
+}
+
+.modal-header,
+.modal-footer {
+  background-color: #2196f3;
+  color: #161616;
+}
+
+.main-container {
+  display: flex;
+  height: 100vh;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.center-vertically-and-horizontally {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color {
+  background-color: #81c9fa;
+  color: #161616;
+}
+
+.color1 {
+  background-color: #11111b;
+}
+
+.color2 {
+  background-color: #c5c5c5;
+}
+
+.bordered {
+  border: 2px solid #c6aae8;
+  border-radius: 10px;
+}

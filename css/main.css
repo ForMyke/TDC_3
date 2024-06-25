@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  color: #c6aae8; /* Texto en rojo */
+  font-family: "Press Start 2P", sans-serif;
+  background: #fff;
+  min-height: 100vh;
+}
+
+a {
+  text-align: start;
+}
+
+hr {
+  border: 2px;
+  height: 3px;
+  opacity: 0.7;
+  background-color: #e296cf;
+}
+
+h1.main-title {
+  color: #0000ff; /* Color azul */
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #c5c5c5;
+  font-size: 15px;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.nav-item {
+  opacity: 0.8;
+}
+
+.navbar-brand {
+  color: #161616;
+}
+
+.navbar-nav .nav-link {
+  color: #161616;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #2c2c2c;
+}
+
+.navbar-brand:hover {
+  color: #292929;
+}
+
+.navbar .dropdown-menu {
+  display: block;
+}
+
+.modal-content {
+  border-color: #c6aae8; /* Borde del modal en rojo */
+  border-radius: 10px;
+}
+.modal-header,
+.modal-footer {
+  background-color: #2196f3;
+  color: #161616;
+}
+
+.main-container {
+  display: flex;
+  height: 100vh;
+}
+
+.navbar {
+  width: 100px;
+  position: relative; /* Añadido para la posición relativa */
+}
+
+.navbar-brand-wrapper {
+  position: absolute;
+  bottom: 10px;
+  right: 10px; /* Posiciona el botón en la esquina inferior derecha */
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.color {
+  background-color: #81c9fa;
+  color: #161616;
+}
+
+.color1 {
+  background-color: #fff;
+  color: #000;
+  font-size: 20px;
+}
+
+.color2 {
+  background-color: #c5c5c5;
+}
+
+.bordered {
+  border: 2px solid #c6aae8;
+  border-radius: 10px;
+}
