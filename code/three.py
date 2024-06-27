@@ -5,31 +5,41 @@ import json
 # Crear un etiquetador de expresiones regulares
 regexp_tagger = nltk.RegexpTagger(
     [
-        (r"^[0-9]+$", 'Dec'),
+        (r"^[0-9]+$", 'Entero'),
         (r"^0x[0-9A-Fa-f]+$", 'Hex'),
         (r"^[a-zA-Z_][a-zA-Z0-9_]*$", 'Identificador'),
         (r"^[+-]?[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?$", 'NotacionCientifica'),
         (r"^=$", 'Igual'),
-        (r"^;$", 'PuntoComa'),
-        (r"^\+$", 'Suma')
+        (r"^;$", 'PComa'),
+        (r"^\+$", 'Suma'),
+        (r"^\-$", 'Resta'),
+        (r"^\*$", 'Mult'),
+        (r"^%$", 'Porce'),
+        (r"^/$", 'Div'),
+        (r"^\($", 'pAbre'),
+        (r"^\)$", 'pCierre'),
     ]
 )
 
 # Definir una gramática libre de contexto
 grammar = CFG.fromstring("""
     S -> Asignacion
-    Asignacion -> Identificador Igual Expresion Pcoma | Identificador Igual Asignacion
-    Expresion -> Expresion Suma Termino | Expresion '-' Termino | Termino
-    Termino -> Termino '*' Factor | Termino '/' Factor | Termino '%' Factor | Factor
-    Factor -> '(' Expresion ')' | Numero | Identificador
-    Numero -> Dec | Hex | NotacionCientifica
+    Asignacion -> Identificador Igual Expresion PComa | Identificador Igual Asignacion
+    Expresion -> Expresion Suma Termino | Expresion Resta Termino | Termino
+    Termino -> Termino Mult Factor | Termino Div Factor | Termino Porce Factor | Factor
+    Factor -> pAbre Expresion pCierre | Numero | Identificador
+    Numero -> Entero | Hex | NotacionCientifica
     Identificador -> 'Identificador'
-    Dec -> 'Dec'
+    Entero -> 'Entero'
     Hex -> 'Hex'
     NotacionCientifica -> 'NotacionCientifica'
     Igual -> 'Igual'
-    Pcoma -> 'PuntoComa'
+    PComa -> 'PComa'
     Suma -> 'Suma'
+    Resta -> 'Resta'
+    Div -> 'Div'
+    pAbre -> 'pAbre'
+    pCierre -> 'pCierre'
 """)
 
 # Crear el parser

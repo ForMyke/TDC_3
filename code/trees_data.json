@@ -1,1 +1,152 @@
-[]
+[
+  {
+    "name": "S",
+    "children": [
+      {
+        "name": "Asignacion",
+        "children": [
+          {
+            "name": "Identificador",
+            "children": [
+              {
+                "name": "Identificador"
+              }
+            ]
+          },
+          {
+            "name": "Igual",
+            "children": [
+              {
+                "name": "Igual"
+              }
+            ]
+          },
+          {
+            "name": "Expresion",
+            "children": [
+              {
+                "name": "Termino",
+                "children": [
+                  {
+                    "name": "Termino",
+                    "children": [
+                      {
+                        "name": "Factor",
+                        "children": [
+                          {
+                            "name": "Identificador",
+                            "children": [
+                              {
+                                "name": "Identificador"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Div",
+                    "children": [
+                      {
+                        "name": "Div"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Factor",
+                    "children": [
+                      {
+                        "name": "pAbre",
+                        "children": [
+                          {
+                            "name": "pAbre"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Expresion",
+                        "children": [
+                          {
+                            "name": "Expresion",
+                            "children": [
+                              {
+                                "name": "Termino",
+                                "children": [
+                                  {
+                                    "name": "Factor",
+                                    "children": [
+                                      {
+                                        "name": "Numero",
+                                        "children": [
+                                          {
+                                            "name": "Entero",
+                                            "children": [
+                                              {
+                                                "name": "Entero"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Suma",
+                            "children": [
+                              {
+                                "name": "Suma"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Termino",
+                            "children": [
+                              {
+                                "name": "Factor",
+                                "children": [
+                                  {
+                                    "name": "Identificador",
+                                    "children": [
+                                      {
+                                        "name": "Identificador"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "pCierre",
+                        "children": [
+                          {
+                            "name": "pCierre"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "PComa",
+            "children": [
+              {
+                "name": "PComa"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
